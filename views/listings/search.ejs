@@ -1,0 +1,18 @@
+<h3>Search Result</h3>
+<% if (listings.length === 0){ %>
+    <p>No listing found</p>
+
+<%}  else {%>
+    <% listings.forEach(listing =>{ %>
+    <div>
+        <h4>
+            <a href="/listings/<%= listing._id %>"><%= listing.title %>
+            </a>
+        </h4>
+        <p>
+            <%= listing.location %>
+            ,<%= listing.country %>
+        </p>
+    </div>
+    <%})%>
+<%}%>
