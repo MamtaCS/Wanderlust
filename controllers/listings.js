@@ -104,7 +104,7 @@ module.exports.searchListings=async(req,res)=>{
 module.exports.categoryListings=async(req,res)=>{
     let {category}=req.params;
     let listings=await Listing.find({category:category});
-    res.render("listings/index.ejs",{listings});
+    res.render("listings/index.ejs",{allListings:listings});
 };
 
 
