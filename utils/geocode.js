@@ -20,3 +20,5 @@ async function geocode(location) {
     return null;
   }
 }
+
+module.exports = geocode;
