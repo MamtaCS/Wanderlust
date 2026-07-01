@@ -86,7 +86,7 @@ module.exports.destroyListing=async(req,res)=>{
     res.redirect("/listings");
 };
 
-module.exports.searchListings=wrapAsync(async(req,res)=>{
+module.exports.searchListings=async(req,res)=>{
     console.log(req.query);
     let {query}=req.query;
     let listings=await Listing.find({
@@ -99,12 +99,12 @@ module.exports.searchListings=wrapAsync(async(req,res)=>{
     });
     console.log(listings);
     res.render("listings/search.ejs",{listings});
-});
+};
 
-module.exports.categoryListings=wrapAsync(async(req,res)=>{
+module.exports.categoryListings=async(req,res)=>{
     let {category}=req.params;
     let listings=await Listing.find({category:category});
     res.render("listings/index.ejs",{listings});
-});
+};
 
 

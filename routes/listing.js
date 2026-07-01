@@ -21,7 +21,7 @@ router.get("/new",isLoggedIn,listingController.renderNewForm);
 
 
 //Search
-router.get("/search",listingController.searchListings);
+router.get("/search",wrapAsync(listingController.searchListings));
 
 
 router.route("/:id")
@@ -36,7 +36,7 @@ router.get("/:id/edit",isLoggedIn,isOwner,wrapAsync(listingController.renderEdit
 );
 
 //Category
-router.get("/category/:category",listingController.categoryListings);
+router.get("/category/:category",wrapAsync(listingController.categoryListings));
 
 
 module.exports=router;
