@@ -57,7 +57,7 @@ const store=MongoStore.create({
     touchAfter: 24 * 3600,
 
 });
-store.on("error",()=>{
+store.on("error",(err)=>{
     console.log("ERORR in MONGO SESSION STORE",err);
 })
 
@@ -99,10 +99,12 @@ app.use((req,res,next)=>{
 
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
-app.use("/",userRouter);
+
 app.get('/',(req,res)=>{
     res.send("/listings");
 });
+
+app.use("/",userRouter);
 
 app.all("/{*splat}",(req,res,next)=>{
     next(new expressError(404,"Page not found!"));
@@ -113,7 +115,10 @@ app.use((err,req,res,next)=>{
     res.status(statusCode).render("error.ejs",{message});
     // res.status(statusCode).send(message);
 });
- app.listen(8080,()=>{
-    console.log('Server is running on port 8080');
+
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT,()=>{
+    console.log(`Server is running on port ${PORT}`);
 });
 
