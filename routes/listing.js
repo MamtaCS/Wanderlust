@@ -21,20 +21,7 @@ router.get("/new",isLoggedIn,listingController.renderNewForm);
 
 
 //Search
-router.get("/search",wrapAsync(async(req,res)=>{
-    console.log(req.query);
-    let {query}=req.query;
-    let listings=await Listing.find({
-        $or:[
-            {title:{$regex:query, $options:"i"}},
-            {location:{$regex:query, $options:"i"}},
-            {country:{$regex:query, $options:"i"}},
-
-        ]
-    });
-    console.log(listings);
-    res.render("listings/search.ejs",{listings});
-}));
+router.get("/search",listingController.searchListings);
 
 
 router.route("/:id")
@@ -48,6 +35,8 @@ router.get("/:id/edit",isLoggedIn,isOwner,wrapAsync(listingController.renderEdit
 
 );
 
+//Category
+router.get("/category/:category",listingController.categoryListings);
 
 
 module.exports=router;
