@@ -184,3 +184,48 @@ footer{
     }
 
 }
+
+/*Navbar*/
+.btn-search{
+    background-color: #fe424d;
+    color: #ffff;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+  }
+  .btn-search:hover{
+    background-color: #fe424d;
+    color: #ffff;
+  }
+  .btn-search i{
+    display:inline;
+    margin-right:0.5rem;
+  }
+  .search-input{
+    border-radius: 25px;
+    padding: 0.5rem  3rem 0.5rem 3rem;
+    font-size: 1rem;
+  }
+  @media(max-width:768px){
+    .navbar-collapse{
+        margin-top:10px;
+        background-color:white;
+        padding:1rem;
+        border-radius:15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+
+    }
+    .search-form{
+        margin:1rem 0;
+    }
+    .search-input{
+        width:100%;
+        margin-bottom:1rem;
+    }
+    .btn-search{
+    margin-top:10px;
+    width:100%;
+    }
+    .navbar-nav{
+    align-items:flex-start;
+}
+  }
